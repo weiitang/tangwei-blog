@@ -1,8 +1,8 @@
-import { getAllPostList } from "@/utils/post";
-import PostList from "@/src/components/post-list";
-import PageLayout  from '@/src/components/page-layout';
-import Pagination from "@/src/components/pagination";
-import CategorySidebar from "@/src/components/category-sidebar";
+import CategorySidebar from '@/src/components/category-sidebar';
+import PageLayout from '@/src/components/page-layout';
+import Pagination from '@/src/components/pagination';
+import PostList from '@/src/components/post-list';
+import { getAllPostList } from '@/utils/post';
 
 export async function generateStaticParams() {
   const posts = await getAllPostList();
@@ -30,7 +30,7 @@ const Page = async ({ params }: { params: any }) => {
   return (
     <PageLayout>
       <CategorySidebar categories={categories} posts={posts} />
-      <div className="flex-grow mx-4">
+      <div className="mx-4 flex-grow">
         <PostList posts={currentPosts} />
         <Pagination currentPage={currentPage} totalPages={totalPages} />
       </div>
