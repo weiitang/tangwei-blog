@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { PostData } from "@/types/post";
+import { PostData } from '@/types/post';
+import Link from 'next/link';
 
 interface CategorySidebarProps {
   categories: string[];
@@ -15,17 +15,16 @@ export default function CategorySidebar({
   return (
     <>
       {/* 移动端横向布局 */}
-      <div className="md:hidden w-full overflow-x-auto sticky left-0 top-20">
-        <div className="bg-white shadow-md p-4">
-          <div className="flex gap-2 min-w-max">
+      <div className="sticky top-20 left-0 w-full overflow-x-auto md:hidden">
+        <div className="bg-white p-4 shadow-md">
+          <div className="flex min-w-max gap-2">
             <Link
-              href="/page/1"
-              className={`px-3 py-2 rounded-full text-sm whitespace-nowrap
-                ${
-                  !currentCategory
-                    ? "bg-gray-500 text-white"
-                    : "bg-gray-100 hover:bg-gray-200"
-                }`}
+              href="/"
+              className={`rounded-full px-3 py-2 text-sm whitespace-nowrap ${
+                !currentCategory
+                  ? 'bg-gray-500 text-white'
+                  : 'bg-gray-100 hover:bg-gray-200'
+              }`}
             >
               全部文章
             </Link>
@@ -33,12 +32,11 @@ export default function CategorySidebar({
               <Link
                 key={category}
                 href={`/categories/${encodeURIComponent(category)}/1`}
-                className={`px-3 py-2 rounded-full text-sm whitespace-nowrap
-                  ${
-                    category === currentCategory
-                      ? "bg-gray-500 text-white"
-                      : "bg-gray-100 hover:bg-gray-200"
-                  }`}
+                className={`rounded-full px-3 py-2 text-sm whitespace-nowrap ${
+                  category === currentCategory
+                    ? 'bg-gray-500 text-white'
+                    : 'bg-gray-100 hover:bg-gray-200'
+                }`}
               >
                 {category}
                 <span className="ml-1">
@@ -57,19 +55,18 @@ export default function CategorySidebar({
       </div>
 
       {/* PC端竖向侧边栏 */}
-      <aside className="hidden md:block w-64 flex-shrink-0 sticky top-24 self-start">
-        <div className="bg-white p-4 shadow-md rounded-lg">
-          <h2 className="text-xl font-bold mb-4">文章分类</h2>
+      <aside className="sticky top-24 hidden w-64 flex-shrink-0 self-start md:block">
+        <div className="rounded-lg bg-white p-4 shadow-md">
+          <h2 className="mb-4 text-xl font-bold">文章分类</h2>
           <ul className="space-y-2">
             <li>
               <Link
-                href="/page/1"
-                className={`block p-2 rounded transition-colors
-                  ${
-                    !currentCategory
-                      ? "bg-gray-500 text-white"
-                      : "hover:bg-gray-100"
-                  }`}
+                href="/"
+                className={`block rounded p-2 transition-colors ${
+                  !currentCategory
+                    ? 'bg-gray-500 text-white'
+                    : 'hover:bg-gray-100'
+                }`}
               >
                 全部文章
               </Link>
@@ -78,19 +75,18 @@ export default function CategorySidebar({
               <li key={category}>
                 <Link
                   href={`/categories/${encodeURIComponent(category)}/1`}
-                  className={`block p-2 rounded transition-colors
-                    ${
-                      category === currentCategory
-                        ? "bg-gray-500 text-white"
-                        : "hover:bg-gray-100"
-                    }`}
+                  className={`block rounded p-2 transition-colors ${
+                    category === currentCategory
+                      ? 'bg-gray-500 text-white'
+                      : 'hover:bg-gray-100'
+                  }`}
                 >
                   <span>{category}</span>
                   <span
-                    className={`text-sm ml-2 ${
+                    className={`ml-2 text-sm ${
                       category === currentCategory
-                        ? "text-white"
-                        : "text-gray-500"
+                        ? 'text-white'
+                        : 'text-gray-500'
                     }`}
                   >
                     (
