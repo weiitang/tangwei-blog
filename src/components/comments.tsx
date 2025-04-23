@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import Giscus from "@giscus/react";
+import Giscus from '@giscus/react';
 
 export default function Comments() {
   return (
     <Giscus
-      repo="chennlang/chennlang.github.io"
-      repoId="R_kgDON2OHoA"
-      category="Comments"
-      categoryId="DIC_kwDON2OHoM4CmxNZ"
+      repo="weiitang/tangwei-blog"
+      repoId="R_kgDOObrdig"
+      category="Announcements"
+      categoryId="DIC_kwDOObrdis4CpX8m"
       mapping="pathname"
       strict="0"
       reactionsEnabled="1"
