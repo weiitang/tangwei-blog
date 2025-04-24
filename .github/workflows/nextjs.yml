@@ -62,12 +62,14 @@ jobs:
 
       - name: Upgrade npm
         run: npm install -g npm@latest
+             npm -v
 
       - name: Clear npm cache
         run: npm cache clean --force
+             npm -v
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --verbose
 
       - name: Build with Next.js
         run: npm run build
