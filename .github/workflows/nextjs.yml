@@ -62,18 +62,20 @@ jobs:
 
       - name: Upgrade npm
         run: |
-          npm install -g npm@latest
-          npm -v
+          # npm install -g npm@latest
+          # npm -v
           npm cache clean --force
           npm -v
 
-      - name: Install dependencies
-        run: npm install --verbose
+      - name: Clean node_modules and locks
+        run: |
+          rm -rf node_modules
+          rm -f yarn.lock pnpm-lock.yaml package-lock.json
 
       - name: Install dependencies
         run: |
           npm install --verbose
-          ls -la node_modules # Verify `node_modules` exists
+          # ls -la node_modules # Verify `node_modules` exists
 
       - name: Verify Next.js installation
         run: |
