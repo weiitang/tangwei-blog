@@ -25,11 +25,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Get Version
-        run: node -v && npm -v
+        run: node -v && npm -v && npm config get registry
 
       # - name: Detect package manager
       #   id: detect-package-manager
