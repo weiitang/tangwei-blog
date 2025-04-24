@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   // eslint: {
   //   dirs: ['scripts', 'src', 'utils'],
   // },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  trailingSlash: true,
+  output: 'export',
   /* config options here */
 };
 

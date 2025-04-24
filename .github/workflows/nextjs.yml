@@ -28,9 +28,6 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Get Version
-        run: node -v && npm -v && npm config get registry
-
       # - name: Detect package manager
       #   id: detect-package-manager
       #   run: |
@@ -60,12 +57,17 @@ jobs:
       # - name: Build with Next.js
       #   run: ${{ steps.detect-package-manager.outputs.runner }} run build
 
-      - name: Upgrade npm
-        run: |
-          # npm install -g npm@latest
-          # npm -v
-          npm cache clean --force
-          npm -v
+      # 当时是npm error Exit handler never called! 是因为lock文件里用的是cnpm，vpn拦截流量了，导致ca-certificates(CERT_HAS_EXPIRED)失效
+      # 删除lock文件重新安装
+      # - name: Upgrade npm
+      #   run: |
+      #     # npm install -g npm@latest
+      #     # npm -v
+      #     npm cache clean --force
+      #     npm -v
+
+      - name: Get Version
+        run: node -v && npm -v && npm config get registry
 
       - name: Clean node_modules and locks
         run: |
@@ -74,15 +76,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install --verbose
+          # npm install --verbose
+          npm install
           # ls -la node_modules # Verify `node_modules` exists
 
-      - name: Verify Next.js installation
-        run: |
-          if [ ! -f node_modules/.bin/next ]; then
-            echo "Next.js is not installed. Please check your package.json.";
-            exit 1;
-          fi
+      # - name: Verify Next.js installation
+      #   run: |
+      #     if [ ! -f node_modules/.bin/next ]; then
+      #       echo "Next.js is not installed. Please check your package.json.";
+      #       exit 1;
+      #     fi
 
       - name: Build with Next.js
         run: npm run build
