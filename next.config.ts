@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   },
   trailingSlash: true,
   output: 'export',
+  basePath: '/tangwei-blog',
   /* config options here */
 };
 
