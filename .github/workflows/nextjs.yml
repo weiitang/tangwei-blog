@@ -28,8 +28,8 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Get Version
+        run: node -v && npm -v
 
       # - name: Detect package manager
       #   id: detect-package-manager
@@ -59,6 +59,12 @@ jobs:
 
       # - name: Build with Next.js
       #   run: ${{ steps.detect-package-manager.outputs.runner }} run build
+
+      - name: Upgrade npm
+        run: npm install -g npm@latest
+
+      - name: Clear npm cache
+        run: npm cache clean --force
 
       - name: Install dependencies
         run: npm install
