@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 
     for (let page = 1; page <= totalPages; page++) {
       params.push({
-        category,
+        // 中文
+        category: encodeURIComponent(category),
         page: page.toString(),
       });
     }
@@ -40,7 +41,7 @@ async function CategoryPage({ params }: { params: Params }) {
   const postsPerPage = 10;
 
   const filteredPosts = posts.filter((post) =>
-    post.frontmatter.categories?.includes(category)
+    post.frontmatter.categories?.includes(decodeURIComponent(category))
   );
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
