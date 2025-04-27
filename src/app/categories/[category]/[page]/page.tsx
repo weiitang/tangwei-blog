@@ -38,6 +38,8 @@ async function CategoryPage({ params }: { params: Params }) {
     new Set(posts.flatMap((post) => post.frontmatter.categories || []))
   );
 
+  // eslint-disable-next-line no-console
+  console.log('=====', category, categories);
   const currentPage = Number(page);
   const postsPerPage = 10;
 
