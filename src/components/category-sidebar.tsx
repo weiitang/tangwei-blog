@@ -31,9 +31,11 @@ export default function CategorySidebar({
             {categories.map((category) => (
               <Link
                 key={category}
-                href={`/categories/${encodeURIComponent(category)}/1`}
+                // href={`/categories/${encodeURIComponent(category)}/1`}
+                href={`/categories/${category}/1`}
                 className={`rounded-full px-3 py-2 text-sm whitespace-nowrap ${
-                  category === decodeURIComponent(currentCategory as string)
+                  // category === decodeURIComponent(currentCategory as string)
+                  category === currentCategory
                     ? 'bg-gray-500 text-white'
                     : 'bg-gray-100 hover:bg-gray-200'
                 }`}
@@ -74,9 +76,11 @@ export default function CategorySidebar({
             {categories.map((category) => (
               <li key={category}>
                 <Link
-                  href={`/categories/${encodeURIComponent(category)}/1`}
+                  // href={`/categories/${encodeURIComponent(category)}/1`}
+                  href={`/categories/${category}/1`}
                   className={`block rounded p-2 transition-colors ${
-                    category === decodeURIComponent(currentCategory as string)
+                    // category === decodeURIComponent(currentCategory as string)
+                    category === currentCategory
                       ? 'bg-gray-500 text-white'
                       : 'hover:bg-gray-100'
                   }`}
@@ -84,7 +88,8 @@ export default function CategorySidebar({
                   <span>{category}</span>
                   <span
                     className={`ml-2 text-sm ${
-                      category === decodeURIComponent(currentCategory as string)
+                      // category === decodeURIComponent(currentCategory as string)
+                      category === currentCategory
                         ? 'text-white'
                         : 'text-gray-500'
                     }`}
