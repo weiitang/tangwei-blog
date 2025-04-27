@@ -22,8 +22,8 @@ export async function generateStaticParams() {
     for (let page = 1; page <= totalPages; page++) {
       params.push({
         // 中文
-        // category: encodeURIComponent(category),
-        category: category,
+        category: encodeURIComponent(category),
+        // category: category,
         page: page.toString(),
       });
     }
@@ -41,9 +41,10 @@ async function CategoryPage({ params }: { params: Params }) {
   const currentPage = Number(page);
   const postsPerPage = 10;
 
-  const filteredPosts = posts.filter((post) =>
-    // post.frontmatter.categories?.includes(decodeURIComponent(category))
-    post.frontmatter.categories?.includes(category)
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.frontmatter.categories?.includes(decodeURIComponent(category))
+    // post.frontmatter.categories?.includes(category)
   );
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -57,7 +58,7 @@ async function CategoryPage({ params }: { params: Params }) {
       <CategorySidebar
         categories={categories}
         posts={posts}
-        currentCategory={category}
+        currentCategory={decodeURIComponent(category)}
       />
       <div className="mx-4 flex-grow">
         <PostList posts={currentPosts} />
