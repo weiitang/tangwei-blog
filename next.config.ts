@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  trailingSlash: true,
+  // trailingSlash: true,
   output: 'export',
   basePath: '/tangwei-blog',
   /* config options here */
