@@ -76,8 +76,8 @@ export default function CategorySidebar({
             {categories.map((category) => (
               <li key={category}>
                 <Link
-                  // href={`/categories/${encodeURIComponent(category)}/1`}
-                  href={`/categories/${category}/1`}
+                  href={`/categories/${encodeURIComponent(category)}/1`}
+                  // href={`/categories/${category}/1`}
                   className={`block rounded p-2 transition-colors ${
                     // category === decodeURIComponent(currentCategory as string)
                     category === currentCategory

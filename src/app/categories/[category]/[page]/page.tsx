@@ -22,7 +22,9 @@ export async function generateStaticParams() {
     for (let page = 1; page <= totalPages; page++) {
       params.push({
         // 中文
-        // category: encodeURIComponent(category),
+        // build时，Next.js 在 output: 'export' 时，会将动态参数自动转换为 URL 编码格式
+        // 但是访问/categories/工程化/1/时，获取参数时会将中文编码，%E5%B7%A5%E7%A8%8B%E5%8C%96
+        // category: encodeURIComponent(category), // 会导致参数被双重编码
         category: category,
         page: page.toString(),
       });
@@ -38,8 +40,6 @@ async function CategoryPage({ params }: { params: Params }) {
     new Set(posts.flatMap((post) => post.frontmatter.categories || []))
   );
 
-  // eslint-disable-next-line no-console
-  console.log('=====', category, categories);
   const currentPage = Number(page);
   const postsPerPage = 10;
 
