@@ -45,7 +45,7 @@ async function CategoryPage({ params }: { params: Params }) {
 
   const filteredPosts = posts.filter((post) =>
     // post.frontmatter.categories?.includes(decodeURIComponent(category))
-    post.frontmatter.categories?.includes(category)
+    post.frontmatter.categories?.includes(decodeURIComponent(category))
   );
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -59,8 +59,8 @@ async function CategoryPage({ params }: { params: Params }) {
       <CategorySidebar
         categories={categories}
         posts={posts}
-        // currentCategory={decodeURIComponent(category)}
-        currentCategory={category}
+        currentCategory={decodeURIComponent(category)}
+        // currentCategory={category}
       />
       <div className="mx-4 flex-grow">
         <PostList posts={currentPosts} />
