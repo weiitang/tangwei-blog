@@ -24,8 +24,11 @@ export async function generateStaticParams() {
         // 中文
         // build时，Next.js 在 output: 'export' 时，会将动态参数自动转换为 URL 编码格式
         // 但是访问/categories/工程化/1/时，获取参数时会将中文编码，%E5%B7%A5%E7%A8%8B%E5%8C%96
-        // category: encodeURIComponent(category), // 会导致参数被双重编码
-        category: category,
+        category:
+          process.env.NODE_ENV === 'development'
+            ? encodeURIComponent(category)
+            : category, // 会导致参数被双重编码
+        // category: category,
         page: page.toString(),
       });
     }
@@ -44,7 +47,6 @@ async function CategoryPage({ params }: { params: Params }) {
   const postsPerPage = 10;
 
   const filteredPosts = posts.filter((post) =>
-    // post.frontmatter.categories?.includes(decodeURIComponent(category))
     post.frontmatter.categories?.includes(decodeURIComponent(category))
   );
 
